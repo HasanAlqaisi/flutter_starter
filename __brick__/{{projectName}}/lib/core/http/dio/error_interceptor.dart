@@ -1,7 +1,7 @@
 import 'dart:developer';
 
-import 'package:{{projectName}}/core/failures/http_failure.dart';
 import 'package:dio/dio.dart';
+import 'package:{{projectName}}/core/failures/base_failure.dart';
 
 class ErrorInterceptor extends Interceptor {
   ErrorInterceptor();
@@ -29,7 +29,9 @@ class ErrorInterceptor extends Interceptor {
 
   @override
   Future<void> onError(
-      DioException err, ErrorInterceptorHandler handler) async {
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
     final response = err.response;
 
     _logError(response, err);

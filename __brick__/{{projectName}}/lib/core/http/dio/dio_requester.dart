@@ -1,7 +1,7 @@
-import 'package:{{projectName}}/core/failures/http_failure.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:{{projectName}}/core/failures/base_failure.dart';
 
 import 'package:{{projectName}}/core/http/dio/error_interceptor.dart';
 import 'package:{{projectName}}/core/http/http_requester.dart';
@@ -116,9 +116,7 @@ class DioRequester extends HttpRequester {
 }
 
 final httpRequesterProvider = Provider<HttpRequester>((ref) {
-  final dio = Dio(BaseOptions(
-    headers: {'Authorization': 'Bearer abc'},
-  ));
+  final dio = Dio(BaseOptions(headers: {'Authorization': 'Bearer abc'}));
 
   dio.interceptors.addAll([LogInterceptor(), ErrorInterceptor()]);
 

@@ -1,4 +1,6 @@
-sealed class StorageFailure {
+part of 'base_failure.dart';
+
+sealed class StorageFailure extends BaseFailure {
   final String message;
   final Object? error;
   final StackTrace? stackTrace;

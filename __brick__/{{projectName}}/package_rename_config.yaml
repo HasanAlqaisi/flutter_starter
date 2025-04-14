@@ -1,0 +1,9 @@
+package_rename_config:
+  android:
+    app_name: "{{appName}}"
+    package_name: "{{packageName}}"
+
+  ios:
+    app_name: "{{appName}}"
+    package_name: "{{packageName}}"
+    bundle_name: "{{appName}}"

@@ -13,7 +13,7 @@ version: 0.1.0+1
 # The following defines the environment for the current brick.
 # It includes the version of mason that the brick requires.
 environment:
-  mason: ">=0.1.0-dev.50 <0.1.0"
+  mason: ">=0.1.0 <0.2.0"
 
 # Variables specify dynamic values that your brick depends on.
 # Zero or more variables can be specified for a given brick.
@@ -31,3 +31,28 @@ vars:
     description: Project name
     # default: Dash
     prompt: What is the project name?
+
+  packageName:
+    type: string
+    description: Package name
+    # default: dash
+    prompt: What is the package name?
+
+  appName:
+    type: string
+    description: App name
+    # default: Dash
+    prompt: What is the app name?
+
+  hasForm:
+    type: boolean
+    description: Whether the app has a form
+    # default: false
+    prompt: Does the app have a form?
+    
+    
+    
+    
+    
+    
+    

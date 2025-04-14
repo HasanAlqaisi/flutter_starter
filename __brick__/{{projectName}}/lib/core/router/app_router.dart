@@ -4,13 +4,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/core/router/app_router.gr.dart';
 
 @AutoRouterConfig()
-class AppRouter extends $AppRouter {
+class AppRouter extends RootStackRouter {
   AppRouter();
 
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: MainRoute.page, initial: true),
-      ];
+    AutoRoute(page: MainRoute.page, initial: true),
+  ];
 }
 
 final routerProvider = Provider<AppRouter>((ref) {

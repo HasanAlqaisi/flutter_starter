@@ -1,7 +1,6 @@
 import 'package:{{projectName}}/core/constants/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract final class AppTheme {
   static final light = ThemeData(
@@ -10,71 +9,69 @@ abstract final class AppTheme {
     textTheme: TextTheme(
       displayLarge: GoogleFonts.tajawal(
         fontWeight: FontWeight.w700,
-        fontSize: 56.sp,
+        fontSize: 56,
         letterSpacing: -1,
-        // height: 58.8.h,
+        // height: 58.8,
         color: AppColors.text,
       ),
       displayMedium: GoogleFonts.tajawal(
         fontWeight: FontWeight.w700,
-        fontSize: 40.sp,
+        fontSize: 40,
         letterSpacing: -1,
-        // height: 46.h,
+        // height: 46,
         color: AppColors.text,
       ),
       displaySmall: GoogleFonts.tajawal(
         fontWeight: FontWeight.w700,
-        fontSize: 32.sp,
+        fontSize: 32,
         letterSpacing: -1,
-        // height: 42.h,
+        // height: 42,
         color: AppColors.text,
       ),
       headlineLarge: GoogleFonts.tajawal(
         fontWeight: FontWeight.w700,
-        fontSize: 24.sp,
+        fontSize: 24,
         letterSpacing: -0.5,
-        // height: 32.h,
+        // height: 32,
         color: AppColors.text,
       ),
       headlineMedium: GoogleFonts.tajawal(
         fontWeight: FontWeight.w700,
-        fontSize: 20.sp,
+        fontSize: 20,
         letterSpacing: -0.5,
-        // height: 26.h,
+        // height: 26,
         color: AppColors.text,
       ),
       bodyLarge: GoogleFonts.tajawal(
         fontWeight: FontWeight.w500,
-        fontSize: 16.sp,
+        fontSize: 16,
         letterSpacing: -0.5,
-        // height: 26.h,
+        // height: 26,
         color: AppColors.text,
       ),
       bodyMedium: GoogleFonts.tajawal(
         fontWeight: FontWeight.w500,
-        fontSize: 14.sp,
-        // height: 21.h,
+        fontSize: 14,
+        // height: 21,
         color: AppColors.text,
       ),
       bodySmall: GoogleFonts.tajawal(
         fontWeight: FontWeight.w500,
-        fontSize: 12.sp,
-        // height: 18.h,
+        fontSize: 12,
+        // height: 18,
         color: AppColors.textSmall,
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.r),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
         textStyle: GoogleFonts.tajawal(
           fontWeight: FontWeight.w500,
-          fontSize: 16.sp,
+          fontSize: 16,
           letterSpacing: -0.5,
-          // height: 26.h,
+          // height: 26,
           color: AppColors.text,
         ),
       ),
@@ -83,12 +80,12 @@ abstract final class AppTheme {
       backgroundColor: AppColors.background,
       elevation: 0,
       centerTitle: true,
-      toolbarHeight: 80.h,
+      toolbarHeight: 80,
       titleTextStyle: GoogleFonts.tajawal(
         fontWeight: FontWeight.w700,
-        fontSize: 18.sp,
+        fontSize: 18,
         letterSpacing: -0.5,
-        // height: 26.h,
+        // height: 26,
         color: AppColors.text,
       ),
     ),
@@ -98,7 +95,7 @@ abstract final class AppTheme {
       contentPadding: EdgeInsets.zero,
     ),
     dialogTheme: DialogTheme(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
   );
 }

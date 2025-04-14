@@ -1,6 +1,7 @@
-import 'package:{{projectName}}/core/failures/http_failure.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
+
+import 'package:{{projectName}}/core/failures/base_failure.dart';
 
 abstract class HttpRequester {
   Future<Either<HttpFailure, Response>> get(
@@ -39,9 +40,6 @@ class HttpOptions {
   HttpOptions({this.requestContentType, this.headers});
 
   Options toDioOptions() {
-    return Options(
-      contentType: requestContentType,
-      headers: headers,
-    );
+    return Options(contentType: requestContentType, headers: headers);
   }
 }

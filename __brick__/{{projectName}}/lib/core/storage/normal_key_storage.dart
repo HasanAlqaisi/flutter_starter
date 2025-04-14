@@ -1,11 +1,11 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:fpdart/fpdart.dart';
-
 import 'package:{{projectName}}/core/failures/base_failure.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fpdart/fpdart.dart';
+import 'package:{{projectName}}/main_providers.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class EncryptedKeyStorage {
-  Future<Either<StorageReadFailure, String?>> read({required String key});
+abstract class NormalKeyStorage {
+  Either<StorageReadFailure, String?> read({required String key});
 
   Future<Either<StorageWriteFailure, void>> write({
     required String key,
@@ -15,17 +15,15 @@ abstract class EncryptedKeyStorage {
   Future<Either<StorageFailure, void>> delete({required String key});
 }
 
-class FlutterEncryptedStorage extends EncryptedKeyStorage {
-  final FlutterSecureStorage _secureStroage;
+class SharedPrefNormalKeyStorage extends NormalKeyStorage {
+  final SharedPreferencesWithCache prefs;
 
-  FlutterEncryptedStorage(this._secureStroage);
+  SharedPrefNormalKeyStorage(this.prefs);
 
   @override
-  Future<Either<StorageReadFailure, String?>> read({
-    required String key,
-  }) async {
+  Either<StorageReadFailure, String?> read({required String key}) {
     try {
-      return Right(await _secureStroage.read(key: key));
+      return Right(prefs.get(key)?.toString());
     } catch (e, s) {
       return Left(
         StorageReadFailure(
@@ -43,7 +41,10 @@ class FlutterEncryptedStorage extends EncryptedKeyStorage {
     required String? value,
   }) async {
     try {
-      await _secureStroage.write(key: key, value: value);
+      // ignore: void_checks
+      if (value == null) return Right(prefs.remove(key));
+
+      await prefs.setString(key, value);
 
       return const Right(null);
     } catch (e, s) {
@@ -60,7 +61,7 @@ class FlutterEncryptedStorage extends EncryptedKeyStorage {
   @override
   Future<Either<StorageFailure, void>> delete({required String key}) async {
     try {
-      await _secureStroage.delete(key: key);
+      await prefs.remove(key);
 
       return const Right(null);
     } catch (e, s) {
@@ -75,10 +76,8 @@ class FlutterEncryptedStorage extends EncryptedKeyStorage {
   }
 }
 
-final secureKeyStorageProvider = Provider<EncryptedKeyStorage>((ref) {
-  return FlutterEncryptedStorage(
-    const FlutterSecureStorage(
-      aOptions: AndroidOptions(encryptedSharedPreferences: true),
-    ),
+final normalKeyStorageProvider = Provider<NormalKeyStorage>((ref) {
+  return SharedPrefNormalKeyStorage(
+    ref.watch(sharedPrefsProvider).requireValue,
   );
 });
