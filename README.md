@@ -70,7 +70,7 @@ A modern Flutter starter template with a clean architecture, state management us
 The project follows a feature-first approach with a clear separation of concerns:
 
   
-
+```
 📁 lib/
 
 ├── 📁 app/
