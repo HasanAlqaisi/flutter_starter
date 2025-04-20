@@ -10,6 +10,10 @@ Future<void> run(HookContext context) async {
 
     await Process.run('flutter', ['create', projectName]);
 
+    // remove main.dart
+    final main = File('./${context.vars['projectName']}/lib/main.dart');
+    main.deleteSync();
+
     progress.complete('$projectName created');
   } catch (e) {
     context.logger.err(e.toString());
