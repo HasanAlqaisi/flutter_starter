@@ -1,4 +1,3 @@
-
 # flutter_starter
 
   
@@ -72,81 +71,79 @@ The project follows a feature-first approach with a clear separation of concerns
 
   
 
-```
+📁 lib/
 
-lib/
+├── 📁 app/
 
-├── app/ # Application layer
+│   ├── 📁 common/
 
-│ ├── common/ # Shared components and utilities
+│   │   ├── 📁 widgets/     # Reusable widgets across the app
 
-│ │ ├── widgets/ # Reusable widgets
+│   │   ├── 📁 services/    # Shared services
 
-│ │ ├── services/ # Shared services
+│   │   └── 📁 utils/       # Common utility functions and helpers
 
-│ │ └── utils/ # Common utilities
+│   │
 
-│ │
+│   └── 📁 feature_example/ # Example of a feature module
 
-│ └── feature_example/ # Example feature module
+│       ├── 📁 data/        # Data Layer
 
-│ ├── data/ # Data layer
+│       │   ├── 📁 datasources/  # API clients, local storage
 
-│ │ ├── datasources/ # Data sources (local/remote)
+│       │   ├── 📁 models/       # Data transfer objects (DTOs)
 
-│ │ ├── models/ # Data models
+│       │   └── 📁 repositories/ # Repository implementations
 
-│ │ └── repositories/ # Repository implementations
+│       │
 
-│ │
+│       ├── 📁 domain/      # Business Logic Layer
 
-│ ├── domain/ # Domain layer
+│       │   ├── 📁 entities/     # Core business objects
 
-│ │ ├── entities/ # Business entities
+│       │   ├── 📁 repositories/ # Repository interfaces
 
-│ │ ├── repositories/ # Repository interfaces
+│       │   └── 📁 usecases/     # Business logic units
 
-│ │ └── usecases/ # Business logic
+│       │
 
-│ │
+│       └── 📁 presentation/ # UI Layer
 
-│ └── presentation/ # Presentation layer
+│           ├── 📁 pages/        # Feature screens
 
-│ ├── pages/ # Feature pages
+│           ├── 📁 widgets/      # Feature-specific UI components
 
-│ ├── widgets/ # Feature-specific widgets
-
-│ └── providers/ # Feature providers
+│           └── 📁 providers/    # State management
 
 │
 
-├── core/ # Core functionality
+├── 📁 core/              # Core Infrastructure
 
-│ ├── constants/ # App-wide constants
+│   ├── 📁 constants/     # App-wide constants and configurations
 
-│ ├── extensions/ # Dart extensions
+│   ├── 📁 extensions/    # Dart extension methods
 
-│ ├── failures/ # Error handling
+│   ├── 📁 failures/      # Error handling classes
 
-│ ├── http/ # HTTP client setup
+│   ├── 📁 http/         # HTTP client configuration
 
-│ ├── router/ # AutoRoute configuration
+│   ├── 📁 router/       # Navigation setup (AutoRoute)
 
-│ └── storage/ # Secure storage
-
-│
-
-├── ui/ # UI components
-
-│ ├── theme/ # Theme configuration
-
-│ └── example/ # Example UI components
+│   └── 📁 storage/      # Secure storage implementation
 
 │
 
-├── main.dart # Application entry point
+├── 📁 ui/               # Global UI Components
 
-└── main_providers.dart # Riverpod providers setup
+│   ├── 📁 theme/        # App theming
+
+│   └── 📁 example/      # Example UI components
+
+│
+
+├── 📄 main.dart         # Entry point
+
+└── 📄 main_providers.dart # Global Riverpod providers
 
 ```
   
