@@ -154,7 +154,7 @@ lib/
 ## Key Features
 
 
-- 🏗️ Clean Architecture
+- 🏗️ Feature based
 
 - 🚀 Riverpod for state management
 
