@@ -7,7 +7,6 @@ import 'package:{{projectName}}/core/provider_logger.dart';
 import 'package:{{projectName}}/core/router/app_router.dart';
 import 'package:{{projectName}}/generated/i18n/strings.g.dart';
 import 'package:{{projectName}}/main_providers.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,8 +17,9 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-  // don't allow fonts to be loaded at runtime (http)
-  GoogleFonts.config.allowRuntimeFetching = false;
+  // Enable this to disable fonts to be loaded at runtime (http)
+  // and instead use the fonts in the assets/fonts folder
+  // GoogleFonts.config.allowRuntimeFetching = false;
 
   runApp(
     ProviderScope(
