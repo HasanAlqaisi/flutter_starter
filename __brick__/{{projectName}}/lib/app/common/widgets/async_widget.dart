@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:{{projectName}}/app/common/domain/models/pagination.dart';
-import 'package:{{projectName}}/app/common/widgets/error_card.dart';
+import 'package:trend/app/common/domain/models/pagination.dart';
+import 'package:trend/app/common/widgets/error_card.dart';
+import 'package:trend/core/failures/base_failure.dart';
 
 /// this is a wrapper widget that will handle the state of the async value
 class AsyncWidget<T> extends HookWidget {
@@ -63,11 +64,9 @@ class AsyncWidget<T> extends HookWidget {
       builder: (context, setState) {
         return AsyncWidget<PaginatedResult<T>>(
           asyncValue: asyncValue,
-          builder:
-              (data) =>
-                  data.items.isEmpty
-                      ? emptyBuilder?.call() ?? SizedBox.shrink()
-                      : builder(data.items),
+          builder: (data) => data.items.isEmpty
+              ? emptyBuilder?.call() ?? SizedBox.shrink()
+              : builder(data.items),
           errorBuilder: errorBuilder,
           emptyBuilder: emptyBuilder,
           loadingBuilder: loadingBuilder,
@@ -106,7 +105,7 @@ class AsyncWidget<T> extends HookWidget {
               const Center(child: CircularProgressIndicator()),
         ),
       ),
-      AsyncData val when val.isLoading && showRefreshLoading => wrap(
+      final AsyncData val when val.isLoading && showRefreshLoading => wrap(
         Padding(
           padding: EdgeInsets.all(8),
           child:
@@ -118,8 +117,7 @@ class AsyncWidget<T> extends HookWidget {
         error,
         ErrorCard(
           isLoading: asyncValue.isLoading,
-          //TODO: translate error
-          error: error.toString(),
+          error: handleErrorMessage(error),
           onRetry: asyncValue.isLoading ? null : onRetry,
         ),
       ),
@@ -127,7 +125,6 @@ class AsyncWidget<T> extends HookWidget {
           when emptyBuilder != null && isEmpty(value) =>
         emptyBuilder!(),
       AsyncData(value: final value) => builder(value),
-      AsyncValue() => wrap(const Text('...')),
     };
 
     return child;

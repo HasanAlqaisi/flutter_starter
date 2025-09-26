@@ -94,7 +94,7 @@ abstract final class AppTheme {
       visualDensity: VisualDensity.compact,
       contentPadding: EdgeInsets.zero,
     ),
-    dialogTheme: DialogTheme(
+    dialogTheme: DialogThemeData(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
   );

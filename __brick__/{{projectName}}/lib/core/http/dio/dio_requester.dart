@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:{{projectName}}/core/failures/base_failure.dart';
 
 import 'package:{{projectName}}/core/http/dio/error_interceptor.dart';

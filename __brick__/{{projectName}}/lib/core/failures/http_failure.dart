@@ -1,11 +1,8 @@
 part of 'base_failure.dart';
 
 sealed class HttpFailure extends BaseFailure {
-  final String message;
-  final Object? error;
-  final StackTrace? stackTrace;
-
-  HttpFailure(this.message, {this.error, this.stackTrace});
+  HttpFailure(String message, {super.error, super.stackTrace})
+    : super(message: message);
 }
 
 class HttpSimpleFailure extends HttpFailure {

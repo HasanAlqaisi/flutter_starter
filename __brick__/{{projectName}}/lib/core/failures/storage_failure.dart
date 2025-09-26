@@ -1,11 +1,8 @@
 part of 'base_failure.dart';
 
 sealed class StorageFailure extends BaseFailure {
-  final String message;
-  final Object? error;
-  final StackTrace? stackTrace;
-
-  StorageFailure(this.message, {this.error, this.stackTrace});
+  StorageFailure(String message, {super.error, super.stackTrace})
+    : super(message: message);
 }
 
 class StorageWriteFailure extends StorageFailure {

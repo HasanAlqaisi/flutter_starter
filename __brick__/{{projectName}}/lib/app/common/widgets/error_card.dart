@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ErrorCard extends StatelessWidget {
   const ErrorCard({
     required this.error,
-    this.errorTitle = "Error Happened",
+    this.errorTitle = 'Error Happened',
     this.errorTitleStyle = const TextStyle(fontSize: 16),
     this.isLoading = false,
     super.key,
@@ -57,7 +57,7 @@ class ErrorCard extends StatelessWidget {
                           padding: EdgeInsets.only(top: 8),
                           child: ElevatedButton(
                             onPressed: () async => onRetry?.call(),
-                            child: Text("Retry"),
+                            child: Text('Retry'),
                           ),
                         )
                       else if (isLoading)

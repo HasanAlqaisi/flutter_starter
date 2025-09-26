@@ -43,36 +43,33 @@ class Application extends ConsumerWidget {
     );
 
     return initAsync.when(
-      data:
-          (_) => MaterialApp.router(
-            locale: const Locale("ar"),
-            localizationsDelegates: [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [Locale('ar'), Locale('en')],
-            debugShowCheckedModeBanner: false,
-            routerConfig: ref.watch(routerProvider).config(),
-            theme: AppTheme.light,
-          ),
+      data: (_) => MaterialApp.router(
+        locale: const Locale('ar'),
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('ar'), Locale('en')],
+        debugShowCheckedModeBanner: false,
+        routerConfig: ref.watch(routerProvider).config(),
+        theme: AppTheme.light,
+      ),
 
-      error:
-          (e, s) => tempMaterialApp(
-            Center(
-              child: TextButton(
-                onPressed: () => ref.invalidate(initEntryPointProvider),
-                child: Text(
-                  "Failed to init, click to retry",
-                  textAlign: TextAlign.center,
-                ),
-              ),
+      error: (e, s) => tempMaterialApp(
+        Center(
+          child: TextButton(
+            onPressed: () => ref.invalidate(initEntryPointProvider),
+            child: Text(
+              'Failed to init, click to retry',
+              textAlign: TextAlign.center,
             ),
           ),
-      loading:
-          () => tempMaterialApp(
-            Scaffold(body: Center(child: CircularProgressIndicator())),
-          ),
+        ),
+      ),
+      loading: () => tempMaterialApp(
+        Scaffold(body: Center(child: CircularProgressIndicator())),
+      ),
     );
   }
 }

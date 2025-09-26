@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:{{projectName}}/app/common/domain/models/pagination.dart';
+import 'package:trend/app/common/domain/models/pagination.dart';
 
 abstract interface class PaginationNotifierAbstract<D, T> {
   AsyncValue<D> get state;
   set state(AsyncValue<D> newState);
   // ignore: deprecated_member_use
-  AutoDisposeAsyncNotifierProviderRef<D> get ref;
+  Ref get ref;
 
   Future<void> loadMore();
   bool canLoadMore();
@@ -22,6 +22,7 @@ abstract mixin class PaginationNotifierMixin<T>
   Future<void> loadMore() async {
     final oldState = state;
     if (!oldState.requireValue.hasMore) return;
+    // ignore: invalid_use_of_internal_member
     state = AsyncLoading<PaginatedResult<T>>().copyWithPrevious(oldState);
     state = await AsyncValue.guard<PaginatedResult<T>>(() async {
       final res = await loadData(oldState.requireValue.nextPage());
